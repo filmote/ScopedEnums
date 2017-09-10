@@ -28,7 +28,7 @@ inline Direction &operator++( Direction &c ) {
 
 }
 
-inline Direction &operator++( Direction &c, int ) {
+inline Direction operator++( Direction &c, int ) {
 
   Direction result = c;
   ++c;
@@ -36,7 +36,7 @@ inline Direction &operator++( Direction &c, int ) {
 
 }
 
-inline Direction & operator--( Direction & c ) {
+inline Direction &operator--( Direction & c ) {
 
   c = ( c == Direction::North ) ? Direction::NorthWest : static_cast<Direction>( static_cast<uint8_t>(c) - 1 );
   return c;
@@ -46,7 +46,7 @@ inline Direction & operator--( Direction & c ) {
 inline Direction operator--( Direction & c, int ) {
 
   Direction result = c;
-  ++c;
+  --c;
   return result;
 
 }
@@ -108,7 +108,7 @@ void loop() {
   Direction d = Direction::South;
   
   Serial.println("");
-  Serial.println("Clockwise (using decrement) :");
+  Serial.println("Anticlockwise (using decrement) :");
   for (int16_t i = 0; i < 16; ++i) { 
   
     printDirection(d);
@@ -116,7 +116,6 @@ void loop() {
   
   }
   
-  return 0;
 }
 
 
